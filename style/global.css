@@ -139,6 +139,9 @@ section {
     justify-content: center;
     align-items: center;
     gap: 1em;
+    h2 {
+        width: 50%;
+    }
 }
 
 .movie-info {

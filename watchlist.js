@@ -1,40 +1,12 @@
-let movieSearchResults = []
-let myWishlistMovies = []
-const searchBarForm = document.getElementById('search-bar-form')
-const searchBar = document.getElementById('search-bar')
+let myWatchlist = []
 const movieList = document.getElementById('movie-list')
 
-searchBarForm.addEventListener('submit', e => {
-    e.preventDefault()
-    const movieName = searchBar.value
-    getSearchResults(movieName)
-})
-
-movieList.addEventListener('click', e => {
-    const button = e.target.closest(".watchlist-btn")
-
-    if (!button) return
-
-    const movieId = button.dataset.movieId
-
-    if (!myWishlistMovies.includes(movieId)) {
-        myWishlistMovies.push(movieId)
-        localStorage.setItem('movie', JSON.stringify(myWishlistMovies))
-    }
-})
-
-async function getSearchResults(movieName) {
-    const response = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=8d8863ad`)
-    const data = await response.json()
-    movieSearchResults = data.Search
-    console.log(data.Search)
-    getEachMoviePlate(movieSearchResults)
-}
-
-async function getEachMoviePlate(movieSearchResults) {
+async function renderWatchlist() {
+    myWatchlist = JSON.parse(localStorage.getItem('movie'))
+    console.log(myWatchlist)
     let movieListHtml = ''
-    for(let movie of movieSearchResults) {
-        const res = await fetch(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=8d8863ad`)
+    for(let id of myWatchlist) {
+        const res = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=8d8863ad`)
         const data = await res.json()
         movieListHtml += `
             <div class="movie-plate">
@@ -61,3 +33,7 @@ async function getEachMoviePlate(movieSearchResults) {
     }
     movieList.innerHTML = movieListHtml
 }
+
+
+
+renderWatchlist()
