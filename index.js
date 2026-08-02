@@ -20,7 +20,7 @@ async function getSearchResults(movieName) {
 async function getEachMoviePlate(movieSearchResults) {
     let movieListHtml = ''
     for(let movie of movieSearchResults) {
-        const res = await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=8d8863ad`)
+        const res = await fetch(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=8d8863ad`)
         const data = await res.json()
         movieListHtml += `
             <div class="movie-plate">
