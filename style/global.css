@@ -219,6 +219,9 @@ section {
     }
     .movie-title {
         justify-content: flex-start;
+        h2 {
+            width: 75%;
+        }
     }
     .movie-info {
         display: flex;

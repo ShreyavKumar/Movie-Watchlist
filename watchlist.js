@@ -1,9 +1,22 @@
 let myWatchlist = []
 const movieList = document.getElementById('movie-list')
 
+renderWatchlist()
+
+movieList.addEventListener('click', e => {
+    const button = e.target.closest(".watchlist-btn")
+    if (!button) return
+    const movieId = button.dataset.movieId
+    myWatchlist = myWatchlist.filter(watchlistId => {
+        if(movieId === watchlistId) return false
+        else return true
+    })
+    localStorage.setItem('movie', JSON.stringify(myWatchlist))
+    renderWatchlist()
+})
+
 async function renderWatchlist() {
     myWatchlist = JSON.parse(localStorage.getItem('movie'))
-    console.log(myWatchlist)
     let movieListHtml = ''
     for(let id of myWatchlist) {
         const res = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=8d8863ad`)
@@ -21,9 +34,9 @@ async function renderWatchlist() {
                         <p class="movie-genres">${data.Genre}</p>
                         <button class="watchlist-btn" data-movie-id="${data.imdbID}">
                             <span class="icon">
-                                <i class="fa-solid fa-circle-plus"></i>
+                                <i class="fa-solid fa-circle-minus"></i>
                             </span>
-                            <span>Watchlist</span>
+                            <span>remove</span>
                         </button>
                     </div>
                     <p class="movie-plot">${data.Plot}</p>
@@ -36,4 +49,3 @@ async function renderWatchlist() {
 
 
 
-renderWatchlist()

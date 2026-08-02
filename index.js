@@ -27,7 +27,6 @@ async function getSearchResults(movieName) {
     const response = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=8d8863ad`)
     const data = await response.json()
     movieSearchResults = data.Search
-    console.log(data.Search)
     getEachMoviePlate(movieSearchResults)
 }
 
