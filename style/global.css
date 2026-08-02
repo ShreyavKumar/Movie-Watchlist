@@ -1,0 +1,152 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+input,
+button,
+textarea {
+    font: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.hero-bg-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    background-image: url("../img/hero-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 768px;
+    height: 150px;
+    /* pointer-events: none; */
+}
+
+main {
+    margin: 0 1em 0;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+}
+
+.header {
+    margin-top: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i {
+        color: skyblue;
+        font-size: 2rem;
+    }
+}
+
+form {
+    display: flex;
+    margin-top: 2.5em;
+    margin-left: auto;
+    margin-right: auto;
+    div {
+        position: relative;
+    }
+    i {
+        color: #A5A5A5;
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    input {
+        background-color: #2E2E2F;
+        color: white;
+        width: 100%;
+        height: 40px;
+        border: none;
+        border-radius: 6px 0 0 6px ;
+        padding: 0.5em 0 0.5em 2em;
+    }
+    input::placeholder {
+        color: #A5A5A5;
+    }
+    button {
+        background-color: #4B4B4B;
+        color: white;
+        height: 40px;
+        border: none;
+        border-radius: 0 6px 6px 0;
+        padding: 0 0.5em;
+        cursor: pointer;
+    }
+}
+
+section {
+    margin-top: 2em;
+    /* border: 1px solid red; */
+}
+
+.movie-plate {
+    display: flex;
+    flex-direction: column;
+    padding: 2em 0;
+    border-bottom: 2px solid #2C2C2C;
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.movie-plate:last-child {
+    border-bottom: none;
+}
+
+.movie-description {
+    /* border: 1px solid red; */
+    margin-top: 1em;
+}
+
+.movie-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.movie-info {
+    margin: 1em 0 0.5em 0;
+    p {
+        margin-bottom: .25em;
+    }
+    button {
+        font-size: 1.25rem;
+        margin-top: 0.25em;
+        color: white;
+        background: none;
+        border: none;
+    }
+}
+
+.movie-plot {
+    color: #A5A5A5;
+}
